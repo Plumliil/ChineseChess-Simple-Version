@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "echo 'hello'",
+    "commitlint": "commitlint --config commitlint.config.js -e -V"
   },
   "keywords": [],
   "author": "",
   "license": "",
   "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "miniprogram-api-typings": "^2.8.3-1",

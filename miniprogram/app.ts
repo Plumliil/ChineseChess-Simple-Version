@@ -11,6 +11,7 @@ App<IAppOption>({
     wx.login({
       success: res => {
         console.log(res.code)
+        console.log('lyh');
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       },
     })
