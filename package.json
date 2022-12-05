@@ -1,0 +1,30 @@
+{
+  "name": "miniprogram-ts-less-quickstart",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "miniprogram-api-typings": "^2.8.3-1",
+    "prettier": "^2.8.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo 'git commit trigger husky pre-commit hook' ",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "miniprogram/**/*.{ts,wxml,less}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
