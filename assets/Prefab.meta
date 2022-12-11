@@ -1,0 +1,14 @@
+{
+  "ver": "1.1.0",
+  "importer": "directory",
+  "imported": true,
+  "uuid": "3a22f9b6-0c15-485f-9584-ea8ceafcb1c8",
+  "files": [],
+  "subMetas": {},
+  "userData": {
+    "compressionType": {},
+    "isRemoteBundle": {},
+    "priority": 8,
+    "bundleName": "prefab"
+  }
+}

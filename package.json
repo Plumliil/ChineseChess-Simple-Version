@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "prepare": "husky install",
-    "test": "echo 'hello'",
+    "lint": "eslint --ext .js --ext .jsx client/",
     "commitlint": "commitlint --config commitlint.config.js -e -V"
   },
   "keywords": [],
@@ -15,12 +15,11 @@
     "@commitlint/config-conventional": "^17.3.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
-    "miniprogram-api-typings": "^2.8.3-1",
+    "miniprogram-api-typings": "^3.6.0",
     "prettier": "^2.8.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'git commit trigger husky pre-commit hook' ",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
