@@ -110,8 +110,8 @@ export class Chessboard extends Component {
   onLoad() {
     // 初始化棋盘
     // this.initChessMap();
-    for(let i=0;i<arrMapPR.length;i++){
-      this.createPieces(arrMapPR[i]);
+    for (let i = 0; i < arrMapPR.length; i++) {
+      this.initPieces(arrMapPR[i]);
     }
     this.initPoint();
   }
@@ -121,19 +121,19 @@ export class Chessboard extends Component {
   }
   // pt: team
   // qt: name
-  // 棋子摆放
-  createPieces(pieces) {
+  // 初始化棋盘
+  initPieces(pieces) {
     let node: Node = instantiate(this.pieces);
     node.position.x = (pieces.initPos[0] - 1) * this.QW;
     node.position.y = (pieces.initPos[1] - 1) * this.QW;
     if (this.playType === PT.B) {
-      this.mainNode.angle=180
+      this.mainNode.angle = 180;
       console.log(this.mainNode);
-      this.mainNode.position.x=256;
-      this.mainNode.position.y=289;
-      node.angle=180;
+      this.mainNode.position.x = 256;
+      this.mainNode.position.y = 289;
+      node.angle = 180;
     } else {
-      this.mainNode.angle=0
+      this.mainNode.angle = 0;
     }
     let pieces_img = `pieces/${pieces.team}${pieces.name}`;
     resources.load(pieces_img, ImageAsset, (err: any, imageAsset) => {
@@ -143,41 +143,22 @@ export class Chessboard extends Component {
         this.mainNode.addChild(node);
       }
     });
+    // node.on(Node.EventType.MOUSE_DOWN, this.onTouchEnd, this);
   }
-  // 初始化棋盘
-  // initChessMap() {
-  //   if (this.playType === PT.B) {
-  //     // arrMapPB.forEach((item) => {
-  //     //   this.createPieces(item);
-  //     // });
-
-  //   } else {
-  //     // arrMapPR.forEach((item) => {
-  //     //   this.createPieces(item);
-  //     // });
-  //   }
-  // }
   // 初始化
   initPoint() {
-    for (let i = 0; i < 10; i++) {
-      this.pointMap[i] = [];
-      for (let j = 0; j < 9; j++) {
-        let node: Node = instantiate(this.point);
-        node.position.x = (j-1) * this.QW;
-        node.position.y = (i-1) * this.QW;
-        this.mainNode.addChild(node);
-    //     // touch-start touch-end
-        node.on(Node.EventType.MOUSE_DOWN,this.onTouchEnd,this);
-        this.pointMap[i].push(0);
+    // let;
+    for (let j = 0; j < 10; j++) {
+      this.pointMap[j] = [];
+      for (let i = 0; i < 9; i++) {
+        this.pointMap[j].push(0);
+        console.log(i, j);
       }
     }
     console.log(this.pointMap);
-    console.log(this.mainNode);
   }
   onTouchEnd(e) {
     console.log(e.target);
-    console.log([e.target.position.x,e.target.position.y,e.target.position.z]);
-    
-    console.log(11111);
+    console.log([e.target.position.x, e.target.position.y]);
   }
 }
