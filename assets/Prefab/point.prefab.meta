@@ -1,13 +1,8 @@
 {
-  "ver": "1.1.27",
-  "importer": "prefab",
-  "imported": true,
-  "uuid": "48cb2793-27d1-4906-9381-60b415c2cb2d",
-  "files": [
-    ".json"
-  ],
-  "subMetas": {},
-  "userData": {
-    "syncNodeName": "point"
-  }
+  "ver": "1.2.9",
+  "uuid": "1f97738d-3b47-42df-8b3d-23e0a0c6cbd1",
+  "optimizationPolicy": "AUTO",
+  "asyncLoadAssets": false,
+  "readonly": false,
+  "subMetas": {}
 }

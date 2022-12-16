@@ -1,74 +1,36 @@
 {
-  "ver": "1.0.21",
-  "importer": "image",
-  "imported": true,
+  "ver": "2.3.5",
   "uuid": "247efc7e-6c0c-46eb-8b68-b1822aafe36e",
-  "files": [
-    ".png",
-    ".json"
-  ],
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 377,
+  "height": 417,
+  "platformSettings": {},
   "subMetas": {
-    "6c48a": {
-      "importer": "texture",
+    "WOOD": {
+      "ver": "1.0.4",
       "uuid": "247efc7e-6c0c-46eb-8b68-b1822aafe36e@6c48a",
-      "displayName": "WOOD",
-      "id": "6c48a",
-      "name": "texture",
-      "userData": {
-        "imageUuidOrDatabaseUri": "247efc7e-6c0c-46eb-8b68-b1822aafe36e",
-        "wrapModeS": "repeat",
-        "wrapModeT": "repeat",
-        "minfilter": "linear",
-        "magfilter": "linear",
-        "mipfilter": "none",
-        "anisotropy": 0,
-        "isUuid": true
-      },
-      "ver": "1.0.21",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "f9941": {
-      "importer": "sprite-frame",
-      "uuid": "247efc7e-6c0c-46eb-8b68-b1822aafe36e@f9941",
-      "displayName": "WOOD",
-      "id": "f9941",
-      "name": "spriteFrame",
-      "userData": {
-        "trimType": "auto",
-        "trimThreshold": 1,
-        "rotated": false,
-        "offsetX": 0,
-        "offsetY": 0,
-        "trimX": 0,
-        "trimY": 0,
-        "width": 377,
-        "height": 417,
-        "rawWidth": 377,
-        "rawHeight": 417,
-        "borderTop": 0,
-        "borderBottom": 0,
-        "borderLeft": 0,
-        "borderRight": 0,
-        "packable": true,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "247efc7e-6c0c-46eb-8b68-b1822aafe36e@6c48a",
-        "atlasUuid": ""
-      },
-      "ver": "1.0.9",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
+      "rawTextureUuid": "247efc7e-6c0c-46eb-8b68-b1822aafe36e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 377,
+      "height": 417,
+      "rawWidth": 377,
+      "rawHeight": 417,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
       "subMetas": {}
     }
-  },
-  "userData": {
-    "type": "sprite-frame",
-    "hasAlpha": false,
-    "redirect": "247efc7e-6c0c-46eb-8b68-b1822aafe36e@f9941"
   }
 }

@@ -1,2 +1,2 @@
-# ChineseChess
-中国象棋 - 微信小程序版
+# hello-world
+Hello world new project template.
