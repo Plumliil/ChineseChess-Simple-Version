@@ -7,7 +7,7 @@
 
 const { ccclass, property } = cc._decorator;
 import play_config from "./chess_config";
-
+import rule from "./rule";
 let QT = play_config.chessType;
 let PT = play_config.playerType;
 
@@ -183,8 +183,12 @@ export default class NewClass extends cc.Component {
     if (!oldData || !oldData.pieces) {
       return;
     }
-    console.log(222);
     if (oldData.pieces) {
+      console.log(rule.checkPiecesMove(oldData, newData, this.boardPoint));
+
+      if (!rule.checkPiecesMove(oldData, newData, this.boardPoint)) {
+        return;
+      }
       let oi = oldData.pos[0];
       let oj = oldData.pos[1];
       let ni = newData.pos[0];
