@@ -127,7 +127,34 @@ export default {
   checkMoveB(o, n) {
     let player = o.pieces.pt;
     let { oi, oj, ni, nj, absi, absj } = this.getXY(o, n);
+    if (absi !== 2 || absj !== 2) {
+      console.log("象走田");
+      return false;
+    }
+
+    // 红
+    if (player == "R") {
+      if (nj > 4) {
+        console.log("象不能过河");
+        return false;
+      }
+    }
+    // 黑
+    if (player == "B") {
+      if (nj < 5) {
+        console.log("象不能过河");
+        return false;
+      }
+    }
+    // 蹩脚
+    let newAbsi = (oi - ni) / 2;
+    let newAbsj = (oj - nj) / 2;
+    if (this.boardPoint[Math.abs(oj - newAbsj)][Math.abs(oi - newAbsi)]) {
+      console.log("蹩脚象");
+      return false;
+    }
     console.log(oi, oj, " ====> ", ni, nj);
+    return true;
   },
   /**
    * 士仕规则
@@ -137,7 +164,31 @@ export default {
   checkMoveA(o, n) {
     let player = o.pieces.pt;
     let { oi, oj, ni, nj, absi, absj } = this.getXY(o, n);
+    if (absi !== 1 || absj !== 1) {
+      console.log("士斜着走");
+
+      return false;
+    }
+    if (ni < 3 || ni > 5) {
+      console.log("行动范围超过");
+      return false;
+    }
+    // 红
+    if (player == "R") {
+      if (nj > 2) {
+        console.log("行动范围超过");
+        return false;
+      }
+    }
+    // 黑
+    if (player == "B") {
+      if (nj < 7) {
+        console.log("行动范围超过");
+        return false;
+      }
+    }
     console.log(oi, oj, " ====> ", ni, nj);
+    return true;
   },
   /**
    * 将帅规则
@@ -147,7 +198,31 @@ export default {
   checkMoveK(o, n) {
     let player = o.pieces.pt;
     let { oi, oj, ni, nj, absi, absj } = this.getXY(o, n);
+    if (absi + absj !== 1) {
+      console.log("将走一格");
+
+      return false;
+    }
+    if (ni < 3 || ni > 5) {
+      console.log("行动范围超过");
+      return false;
+    }
+    // 红
+    if (player == "R") {
+      if (nj > 2) {
+        console.log("行动范围超过");
+        return false;
+      }
+    }
+    // 黑
+    if (player == "B") {
+      if (nj < 7) {
+        console.log("行动范围超过");
+        return false;
+      }
+    }
     console.log(oi, oj, " ====> ", ni, nj);
+    return true;
   },
   getXY(o, n) {
     // 获取棋子坐标
