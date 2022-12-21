@@ -67,11 +67,16 @@ export default class NewClass extends cc.Component {
 
   @property(cc.Node)
   RSNode: cc.Node = null;
+  @property(cc.Node)
+  deadNode: cc.Node = null;
+  @property(cc.Button)
+  backButton: cc.Button = null;
 
   private playType = PT.R;
   private QW = 64;
   private boardPoint = [];
   private selectData = null;
+  private moveArray = []; // 存放移动轨迹
   onLoad() {
     if (this.playType === PT.B) {
       this.mainNode.angle = 180;
@@ -80,8 +85,12 @@ export default class NewClass extends cc.Component {
     } else {
       this.mainNode.angle = 0;
     }
+    this.deadNode.angle = 180;
     this.initPieces();
     this.initPoint();
+
+    this.backButton.node.on("click", this.onclickBackButton, this);
+
     console.log(this.boardPoint);
   }
 
@@ -189,10 +198,7 @@ export default class NewClass extends cc.Component {
       if (!rule.checkPiecesMove(oldData, newData, this.boardPoint)) {
         return;
       }
-      let oi = oldData.pos[0];
-      let oj = oldData.pos[1];
-      let ni = newData.pos[0];
-      let nj = newData.pos[1];
+      let { oi, oj, ni, nj } = rule.getXY(oldData, newData);
       this.setRSNode({ i: ni, j: nj });
       cc.tween(oldData.pieces)
         // 设置位置
@@ -209,15 +215,58 @@ export default class NewClass extends cc.Component {
           // 棋盘
           if (newData.pieces) {
             console.log(newData);
-            newData.pieces.destroy();
+            // newData.pieces.destroy();
+            this.setDeadPieces(newData.pieces);
           }
           // 新的坐标点存放 旧的坐标点清零
           this.boardPoint[nj][ni] = oldData.pieces;
           this.boardPoint[oj][oi] = 0;
+
+          this.moveArray.push({
+            oldData,
+            newData,
+          });
         })
         .start();
     }
     console.log(this.boardPoint);
+  }
+  onclickBackButton() {
+    console.log("悔棋");
+    console.log(this.moveArray);
+    let len = this.moveArray.length;
+    if (!len) return;
+    let { oldData, newData } = this.moveArray[len - 1];
+    let { oi, oj, ni, nj } = rule.getXY(oldData, newData);
+    let oldNode = oldData.pieces;
+    let newNode = newData.pieces;
+
+    oldNode.zIndex = 99;
+
+    if (newNode) {
+      newNode.parent = this.mainNode;
+      newNode.setPosition(cc.v2(ni * this.QW, nj * this.QW));
+    } else {
+      this.boardPoint[nj][ni] = 0;
+    }
+
+    cc.tween(oldNode)
+      // 设置位置
+      .to(0.3, {
+        position: cc.v2(oi * this.QW, oj * this.QW),
+      })
+      // 清空当前集合
+      .call(() => {
+        oldData.pieces.zIndex = 0;
+        // oldNode.parent = this.deadNode;
+        this.boardPoint[oj][oi] = oldNode;
+        this.moveArray.splice(len - 1, 1);
+      })
+      .start();
+  }
+  setDeadPieces(node) {
+    node.parent = this.deadNode;
+    node.setPosition(cc.v2(0, 0));
   }
   // update (dt) {}
 }
